@@ -35,7 +35,7 @@ class SimulatedAnnealing:
         """
         return np.sin(4 * x) * x + 1.1 * np.sin(4 * x + 2) + 8 * np.sin(x - 2) + 0.7 * np.sin(12 * x - 4)
 
-    def min_judge(self, de):
+    def max_judge(self, de):
         """搜索最大值时使用：判断新值是否要大于旧值，如果大于就接受，否则以一定概率接受
         :param de: 新旧差值
         :return: 是否采用
@@ -69,7 +69,7 @@ class SimulatedAnnealing:
             y_new = SimulatedAnnealing.Function(x_new)
             de = y_new-y_old
             # 判断是否运用变化
-            checkout = self.min_judge(de)
+            checkout = self.max_judge(de)
             if checkout:
                 y_old = y_new
                 x_old = x_new
@@ -84,7 +84,6 @@ class SimulatedAnnealing:
                 self.count += 1
             # 长时间找不到更优解或者跳动概率较低，那么退出循环了
             if self.count > 5000:
-                print("当前x值", x_old, "当前最大值", y_old)
                 break
         print("当前x值", x_old, "当前最大值", y_old)
         pass
