@@ -140,7 +140,7 @@ if __name__ == "__main__":
     创建种群对象，赋值dna长度，种群个数，交叉概率，变异概率，迭代次数
     假设精确到四位小数，x取值范围[0,5]，那么(5-0)*1e+4=5e+4个等分,所以取16位编码
     """
-    population = Population(DNA_length=15,
+    population = Population(DNA_length=16,
                             population_size=100,
                             cross_rate=0.9,
                             mutation_rate=0.002,
